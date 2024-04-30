@@ -1,0 +1,10 @@
+4.4.2024
+-met in iesb to discuss overall project framework
+-after reasoning with our strengths and weaknesses and tasks to be done:
+    -Steph:  *in charge of designing GPIO function interface framework
+             *draw prgram GPIO flowchart
+    -Joseph: *research tkinter GUI and other GUI modules.
+             *make working GUI draft
+    -August: *make circuit digram of all parts and wires in software
+             *make order sheet of parts
+    -all     *get familiar with git
