@@ -1,0 +1,27 @@
+"my first commit"
+
+/////////////////////Using GIT!!/////////////////////////////////
+#notes to use git:
+
+git init    #initializies git commands
+
+git clone   #only run once to get started.
+
+git pull origin <main or branch> --allow-unrelated-histories  
+    # pulls all!!! do every time before the rest of these
+    # git add commit all local changes before git pull so nothing is overwritten
+    # use --allow-unrelated-histories if your repo started independtly, only needed once
+
+git add .   #chooses files that are oging to be added to local repo
+
+git commit -m  #adds files and changes to local repo
+
+git push origin <main or branch>    #pushes all changes made in your local repo to your branch
+    #must add and commmit to your branch first
+
+git status  #lets you know:
+    #branch
+    #non added and commmited files
+
+#git checkout -b <branch>
+    #switch to your branch before commmiting (good for adding/commiting/pushing)
