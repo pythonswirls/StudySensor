@@ -30,3 +30,7 @@ help menu. Still need to add more buttons and play around with theme. Also did q
 Remembered to commit my changes today. Also added a building menu to skip the map segment if intended. 
 Translated the code to a class. Took a while to ensure a back button existed, but it works now.
 Gonna work on filling out the help menu and room creation later tonight.
+
+4/30/2024:
+Met up with the group, worked on github shennigans for almost two hours. Filled out the help menu and got some
+of the work done on the room creation. Still need to make rooms with stats from GPIO file, and set up map.

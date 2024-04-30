@@ -28,8 +28,10 @@ class MenuManager:
     
     # Creates and displays all integrated buildings
     def create_building_menu(self):
-        building_menu = pygame_menu.Menu('Rooms', 1366, 768, theme = themes.THEME_DARK)
-        
+        building_menu = pygame_menu.Menu('Buildings', 1366, 768, theme = themes.THEME_DARK)
+        building_menu.add.button('IESB', self.show_IESB_rooms(3))
+        building_menu.add.button('Wyly', self.show_wyly_rooms)
+        building_menu.add.button('Library', self.show_library_rooms)
         return building_menu
     
     def show_building_menu(self):
@@ -38,11 +40,26 @@ class MenuManager:
     # Creates and displays the map of integrated buildings
     def create_map(self):
         map_menu = pygame_menu.Menu('Real-Time Map', 1366, 768, theme = themes.THEME_DARK)
-        map_menu.pygame.image.load
         return map_menu
 
     def show_map(self):
         self.main_menu._open(self.map_menu)
+
+    def show_IESB_rooms(self, capacity):
+        rooms = pygame_menu.Menu('Rooms', 1366, 768, theme = themes.THEME_DARK)
+        rooms.add.text_input("Floor 3, Room 1:", default = f'Capacity: {capacity}/6')
+        rooms.add.text_input("Floor 3, Room 2:", default = f'Capacity: {capacity}/6')
+        rooms.add.text_input("Floor 3, Room 3:", default = f'Capacity: {capacity}/6')
+        return rooms
+
+
+    # Passed because of lack of implementation in this building
+    def show_wyly_rooms(self):
+        pass
+
+    # Passed because of lack of implementation in this building
+    def show_library_rooms(self):
+        pass
     
     # Creates and displays the functionality of the GUI (Map is a real time map of building occupancy, 
     # building menu is a general menu of buildings, clicking on building takes you to a lisy of rooms 
