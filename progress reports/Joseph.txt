@@ -1,0 +1,32 @@
+4/4/24:
+Met for the first time, split work into three main sections to be completed seperately.
+Stephanie -> GPIO portions of the code.
+Joseph -> GUI portion of the code.
+August -> Hardware portion of the code.
+
+GPIO will include getting information from the sensors and transmitting it to the GUI.
+
+GUI will include a menu interface, possibly a real-time map (depending on difficulty), 
+and any other major functions.
+
+Hardware will consist of two sensors conected to a rasberry pi (or substitute).
+
+4/7/2024:
+Created first iteration of GUI. Tkinter is very annoying, but without better alternatives, I will manage as is.
+
+4/12/2024:
+Worked on it between classes during the past week, first menu is done. Reminder to research tkinter 
+alternatives and to play around with the colors. Currently looks too unnatural.
+
+4/20/2024:
+Too busy to get much work done. Got some alternative choices though. Pygame might be the simplest 
+and I already have some experience with it. I'll consider it after my math test.
+
+4/24/2024:
+Swapped to pygame because Tkinter is still annoying to work with. Redid the frontal menu and made a 
+help menu. Still need to add more buttons and play around with theme. Also did questionably on that math test.
+
+4/27~28/2024:
+Remembered to commit my changes today. Also added a building menu to skip the map segment if intended. 
+Translated the code to a class. Took a while to ensure a back button existed, but it works now.
+Gonna work on filling out the help menu and room creation later tonight.

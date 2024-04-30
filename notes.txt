@@ -1,5 +1,6 @@
 "my first commit"
 
+/////////////////////Using GIT!!/////////////////////////////////
 #notes to use git:
 
 git init    #initializies git commands
@@ -13,7 +14,7 @@ git pull origin <main or branch> --allow-unrelated-histories
 
 git add .   #chooses files that are oging to be added to local repo
 
-git add commit -m  #adds files and changes to local repo
+git commit -m  #adds files and changes to local repo
 
 git push origin <main or branch>    #pushes all changes made in your local repo to your branch
 
