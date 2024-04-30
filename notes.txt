@@ -22,3 +22,5 @@ git status  #lets you know:
     #branch
     #non added and commmited files
 
+#git checkout -b <branch>
+    #switch to your branch before commmiting (good for adding/commiting/pushing)
