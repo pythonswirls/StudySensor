@@ -2,9 +2,10 @@
 
 import pineworklabs.RPi as GPIO
 from time import sleep
+import time
+import datetime
 
 GPIO.setmode(GPIO.LE_POTATO_LOOKUP)
-
 
 
 #Constants 
@@ -14,6 +15,7 @@ SETTLE_TIME = 2
 TRIGGER_TIME = 0.0001
 SPEED_OF_TIME = 343 #m/s
 DEFAULT_PINS = [1,2]
+DISTANCE_DOOR = 2.5 #ft
 
 
 
@@ -60,12 +62,24 @@ class Sensor():
 
     def calibrate(self):
         """Regulates the distances and returns a correction factor to use for calculations"""
+        
         pass
 
     def sensor_tripped(self):
         """If there's movement of a person between a calculated distance of the doorways,
         the sensor records this distance for correction factor later. """
         
+        GPIO.output(TRIG, GPIO.HIGH)
+        sleep(TRIGGER_TIME)
+        GPIO.output(TRIG, GPIO.LOW)
+        #wait for ECHO pin to be high
+        if (GPIO.input(ECHO) == GPIO.LOW):
+            start = datetime
+        if (GPIO.input(ECHO) == GPIO.HIGH):
+            end = datetime
+        duration = end - start 
+        
+
 
     def record_times(self):
         """If the sensor_tripped function is initiated, a list starts appending a time stamp of the 
@@ -73,6 +87,9 @@ class Sensor():
 
         list= []
         #time stamp stuff
+        if self.sensor_tripped == True:
+            start_time = time.time()
+            
         return list
     
     def calculations(self, list):
