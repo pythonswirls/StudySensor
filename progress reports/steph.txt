@@ -1,0 +1,25 @@
+4-4-2024
+    First official meeting 
+        -tried to set up git unsucessfully
+        -split up the project where Joseph starts on the GUI, August starts with the circuit and parts list
+         and I start with the GPIO code for the two ultrasonic sensors
+
+4-15-2024
+    Started working on the outline for the main code. Doesn't seem like we would need a lot of functions
+
+4-22-2024
+    Since we are using two different sensors with the same functionality with little difference, made a Sensor 
+    class with the name and pins being the difference. Didn't do much else, too busy.
+
+4-29-2024
+    Mapped out the functionality and what outputs we would need from our functions and re wrote most of the outline
+    with August. Thought about using two differnet time modules. Mapped out the code that would need to be integrated 
+    with Joseph at a weekly meeting. 
+
+5-6-2024
+    Finally made some progress on the rest of the code functions and ran the first mock test. Doesn't work yet but runs the 
+    code without any major errors. Also pushed most of the work to github, this time without deleting the whole repo. 
+
+
+
+

@@ -87,21 +87,43 @@ class Sensor():
 
 
     def record_times(self):
-        """If the sensor_tripped function is initiated, a list starts appending a time stamp of the 
-        trips up to a certain set amount."""
+        """THIS FUNCTION IS FOR TESTING PURPOSES. If the sensor_tripped function is initiated, a list starts appending
+        a time stamp of the trips up to a certain set amount. In case there is an error, check the time stamps"""
 
-        list= []
-        #time stamp stuff
         if self.sensor_tripped == True:
-            start_time = time.time()
-            
-        return list
+            result = datetime()
+
+            print(result)
+
     
     def calculations(self, list):
         """Takes in the list of recorded times as a argument and calculates a average time that 
         the sensor was tripped and returns that value"""
 
-    def in_or_out(self, other:'Sensor'):
+        list_sum = sum(list)
+        average = list_sum/len(list)
+
+        #implement some way to limit the decimals
+        return average
+
+    def in_or_out(self, other:'Sensor', count):
         """Compares two sensors by taking their calculations and returning a positive or negative value"""
+        #To label the sensors, self is considered closer to outside the room and other is closer to the inside.
+        #if the time is smaller, got tripped first, someone went in, otherwise, someone left the room
+
+        if self.calculations() <= other.calculations:
+            count += 1
+
+        elif other.calculations >= other.calculations:
+            count -= 1
+
+        else: 
+            raise ValueError("Negative value returned.")
+        
+        return count
+
+
+
+
         
 
