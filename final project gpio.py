@@ -69,15 +69,20 @@ class Sensor():
         """If there's movement of a person between a calculated distance of the doorways,
         the sensor records this distance for correction factor later. """
         
-        GPIO.output(TRIG, GPIO.HIGH)
-        sleep(TRIGGER_TIME)
-        GPIO.output(TRIG, GPIO.LOW)
-        #wait for ECHO pin to be high
-        if (GPIO.input(ECHO) == GPIO.LOW):
-            start = datetime
-        if (GPIO.input(ECHO) == GPIO.HIGH):
-            end = datetime
-        duration = end - start 
+
+        list = []
+        count = 0
+        if count > 5:
+            GPIO.output(TRIG, GPIO.HIGH)
+            sleep(TRIGGER_TIME)
+            GPIO.output(TRIG, GPIO.LOW)
+            #wait for ECHO pin to be high
+            if (GPIO.input(ECHO) == GPIO.HIGH):
+                time_ = time()
+                list.append(time_)
+            count += 1
+        #use this function to compare the times that one sensor went off with another 
+        return list
         
 
 
