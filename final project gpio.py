@@ -104,5 +104,4 @@ class Sensor():
     def in_or_out(self, other:'Sensor'):
         """Compares two sensors by taking their calculations and returning a positive or negative value"""
         
-###MAIN###
 

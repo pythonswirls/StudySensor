@@ -53,15 +53,16 @@ class MenuManager:
 
     def show_IESB_rooms(self, capacity):
         rooms = pygame_menu.Menu('Rooms', WIDTH, HEIGHT, theme = themes.THEME_DARK)
+        '''Note by August; made capacity const for all but first room'''
         rooms.add.label(f"Floor 1, Room 1; Capacity: {capacity}/6")
-        rooms.add.label(f"Floor 1, Room 2; Capacity: {capacity}/6")
-        rooms.add.label(f"Floor 1, Room 3; Capacity: {capacity}/6")
-        rooms.add.label(f"Floor 2, Room 1; Capacity: {capacity}/6")
-        rooms.add.label(f"Floor 2, Room 2; Capacity: {capacity}/6")
-        rooms.add.label(f"Floor 2, Room 3; Capacity: {capacity}/6")
-        rooms.add.label(f"Floor 3, Room 1; Capacity: {capacity}/6")
-        rooms.add.label(f"Floor 3, Room 2; Capacity: {capacity}/6")
-        rooms.add.label(f"Floor 3, Room 3; Capacity: {capacity}/6")
+        rooms.add.label(f"Floor 1, Room 2; Capacity: {6}/6")
+        rooms.add.label(f"Floor 1, Room 3; Capacity: {6}/6")
+        rooms.add.label(f"Floor 2, Room 1; Capacity: {6}/6")
+        rooms.add.label(f"Floor 2, Room 2; Capacity: {6}/6")
+        rooms.add.label(f"Floor 2, Room 3; Capacity: {6}/6")
+        rooms.add.label(f"Floor 3, Room 1; Capacity: {6}/6")
+        rooms.add.label(f"Floor 3, Room 2; Capacity: {6}/6")
+        rooms.add.label(f"Floor 3, Room 3; Capacity: {6}/6")
         return rooms
 
     # Filled with unknowns because sensors are limited
@@ -101,5 +102,7 @@ class MenuManager:
     def run(self):
         self.main_menu.mainloop(self.surface)
 
+'''Note by August; capacity/free_rooms to be modified in main.py
+    free_rooms will be const for our purpose'''
 main = MenuManager(capacity = 0, free_rooms = 0)
 main.run()

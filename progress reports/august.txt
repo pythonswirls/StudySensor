@@ -8,3 +8,20 @@
     -August: *make circuit digram of all parts and wires in software
              *make order sheet of parts
     -all     *get familiar with git
+
+5.6.2024
+-met and discussed in class how our overall project is coming together and the overall picture:
+    -by this time, joseph has a fully working final GUI. what must be thought of is the tethering of data 
+        passed through from the main file to the GUI.
+    -Me and Steph discussed the overall outline of main and brainstormed/psuedocoded how a few important 
+        parts of the programwould gather and return data. They were the "sensor read" function, and 
+        the main GUI loop
+-later this evening, me and stephanie have:
+    -make a rough draft of our presentation fold-up board
+    -helped fix Stephanie's git setup (without breaking anything yay)
+    -started to type out pseudocode for respective functions
+        -implemented real code
+    -created a "main.py" to organize everything
+    -ran tests on the raspberry pi, and debugged potential GPIO sensor issues
+*in this process I have pulled all branches into mine, and will combine all changes with no conflictions and
+    push to main
