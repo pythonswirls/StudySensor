@@ -16,7 +16,7 @@ from GUI import *
 #Instantiate classes/ temp vars
 #                         [trig, echo]
 sonic1 = Sensor("sonic1", [19,18])
-sonic2 = Sensor("sonic2", [5,6])
+sonic2 = Sensor("sonic2", [6,5])
 sonic1.calibrate
 sonic2.calibrate
 
@@ -36,7 +36,7 @@ while(RUNNING):
     list2 = []
     timeavg1 = 0
     timeavg2 = 0
-    val = 0
+   
 
     if count <= 5:
         list1 = sonic1.sensor_tripped(list1)

@@ -91,13 +91,13 @@ class Sensor():
         timeavg = 0
         count = 0
         while count <= 5:
-            time_start = time()
+            time_start = time.time()
             GPIO.output(self.TRIG, GPIO.HIGH)
             sleep(TRIGGER_TIME)
             GPIO.output(self.TRIG, GPIO.LOW)
 
             if GPIO.input(self.ECHO) == GPIO.HIGH:
-                time_end = time()
+                time_end = time.time()
             
             timeavg += (time_end - time_start)
             count +=1
@@ -116,13 +116,13 @@ class Sensor():
         count = 0
         if count > 5:
             count +1'''
-        time_start = time()
+        time_start = time.time()
         GPIO.output(self.TRIG, GPIO.HIGH)
         sleep(TRIGGER_TIME)
         GPIO.output(self.TRIG, GPIO.LOW)
         #wait for ECHO pin to be high
         if (GPIO.input(self.ECHO) == GPIO.HIGH):
-            time_end = time()
+            time_end = time.time()
             if (time_end - time_start) <= self.gap:
                 list.append(time_end)
                 return list
