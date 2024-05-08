@@ -1,6 +1,6 @@
 #Group 2 -- GPIO code 
 
-import pineworklabs.RPi as GPIO
+import pineworkslabs.RPi as GPIO
 from time import sleep
 import time
 import datetime

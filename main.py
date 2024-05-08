@@ -21,4 +21,4 @@ timeavg2 = 0
 #TODO: git fetch Sensor.py individually from Steph to not overwrite main.py
 
 while run == True:
-    pass
+    print("hi")

@@ -7,8 +7,8 @@ import pygame_menu
 from pygame_menu import themes
 from pygame_menu.baseimage import BaseImage
 
-HEIGHT = 768
-WIDTH = 1366
+HEIGHT = 600
+WIDTH = 900
 
 class MenuManager:
 
