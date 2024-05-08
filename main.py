@@ -17,6 +17,9 @@ import pygame
 #                         [trig, echo]
 sonic1 = Sensor("sonic1", [19,18])
 sonic2 = Sensor("sonic2", [5,6])
+sonic1.calibrate
+sonic2.calibrate
+
 run = True
  
 people = 0
@@ -51,10 +54,3 @@ while(RUNNING):
         if people >= oldval:
             main.capacity += 1'''
     
-
-<<<<<<< HEAD
-while run == True:
-    print("hi")
-=======
-    
->>>>>>> 1370feaa941f19a7cef6ea00577f124cfca581d9

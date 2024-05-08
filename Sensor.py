@@ -176,11 +176,7 @@ class Sensor():
 
     def __str__(self):
 
-<<<<<<< HEAD
         return f"{self.record_times}"
 
 
         
-=======
-        return f"{self.record_times}"
->>>>>>> 1370feaa941f19a7cef6ea00577f124cfca581d9
