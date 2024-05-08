@@ -15,9 +15,10 @@ class MenuManager:
     # Constructor
     def __init__(self, capacity, free_rooms):
         pygame.init()
+        self.capacity = capacity
         self.surface = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
         self.main_menu = self.create_main_menu()
-        self.building_menu = self.create_building_menu(capacity)
+        self.building_menu = self.create_building_menu(self.capacity)
         self.map_menu = self.create_map(free_rooms)
         self.help_menu = self.create_help_menu()
 
