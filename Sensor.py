@@ -1,4 +1,6 @@
 #Group 2 -- GPIO code 
+#Causey, Dalferes, Vaurigaud 
+
 
 import pineworklabs.RPi as GPIO
 from time import sleep
@@ -156,25 +158,22 @@ class Sensor():
         #implement some way to limit the decimals
         return average
 
-    def in_or_out(self, other:'Sensor', count):
+    def in_or_out(self, other:'Sensor', people):
         """Compares two sensors by taking their calculations and returning a positive or negative value"""
         #To label the sensors, self is considered closer to outside the room and other is closer to the inside.
         #if the time is smaller, got tripped first, someone went in, otherwise, someone left the room
 
         if self.calculations() <= other.calculations:
-            count += 1
+            people += 1
 
         elif other.calculations >= other.calculations:
-            count -= 1
+            people -= 1
 
         else:
             raise ValueError("Negative value returned.")
         
-        return count
+        return people
 
     def __str__(self):
 
         return f"{self.record_times}"
-
-
-        
