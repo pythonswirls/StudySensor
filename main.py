@@ -11,7 +11,7 @@
 #likely wont need to see if main_menu.add.button('Quit', pygame_menu.events.EXIT) = True
 from Sensor import *
 from GUI import *
-import pygame
+
 
 #Instantiate classes/ temp vars
 #                         [trig, echo]
@@ -19,6 +19,10 @@ sonic1 = Sensor("sonic1", [19,18])
 sonic2 = Sensor("sonic2", [5,6])
 sonic1.calibrate
 sonic2.calibrate
+
+print(sonic1.gap)
+print(sonic2.gap)
+
 
 run = True
  
@@ -41,12 +45,13 @@ while(RUNNING):
     
     timeavg1 = sonic1.calculations(list1)
     timeavg2 = sonic2.calculations(list2)
+    
 
     #oldval = main.capacity
 
-    people = sonic1.in_or_out(sonic2, people)
+    people += sonic1.in_or_out(sonic2, people)
     
-    main.capacity += people
+    main.__init__((6-people), 0)
     '''
     if people <= oldval:
         main.capacity -= 1

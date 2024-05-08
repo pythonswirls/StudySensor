@@ -29,7 +29,7 @@ class Sensor():
     '''added self.TRIG and self.ECHO and getters/setters'''
     def __init__(self, name:str, pins:list):
         self.name = name
-        self.pins = self.configure_pins(pins)
+        self.configure_pins(pins)
         self.TRIG = 0
         self.ECHO = 0
         self.gap = 0.0  #to be used by sensor_tripped for range checking (being within door frame)
@@ -42,16 +42,7 @@ class Sensor():
     def name(self,value):
         self._name = value
 
-    @property                   #pins getter/setter
-    def pins(self):
-        return self._pins
-    
-    @pins.setter
-    def pins(self, value):
-        if len(value) == 2:
-            self._pins = value
-        else:
-            self._pins = DEFAULT_PINS
+    "removed self.pins bc it is un-needed"
 
     "TRIG/ECHO getters/setters"
     @property                   
