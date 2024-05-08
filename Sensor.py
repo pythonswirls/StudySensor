@@ -111,6 +111,7 @@ class Sensor():
             timeavg += (time_end - time_start)
             count +=1
         timeavg = timeavg/5
+        print(f"self.gap = {timeavg}")
         self.gap = timeavg
 
 
