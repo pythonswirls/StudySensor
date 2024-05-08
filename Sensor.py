@@ -167,7 +167,7 @@ class Sensor():
         elif other.calculations >= other.calculations:
             count -= 1
 
-        else: 
+        else:
             raise ValueError("Negative value returned.")
         
         return count
