@@ -88,11 +88,29 @@ class Sensor():
     def calibrate(self):
         """Regulates the distances and returns a correction factor to use for calculations"""
         
-        #Noes for August: make is where we put in the measured distance from the sensor to the door,
-        #then the sensor goes off and gets that value. You get: correction factor. If the correction factor is 
-        #lower, than the sensor wont go off unless sensor_distance_reading > known_distance by greater than correction factor
+        #Notes for August: make is where we put in the measured distance from the sensor to the door,
+        #then the sensor goes off and gets that value. You get: correction factor. 
+        #If the correction factor is lower, than the sensor wont go off unless 
+        #sensor_distance_reading > known_distance 
+        #by greater than correction factor
         #vice versa
         "self.gap is modified"
+        timeavg = 0
+        count = 0
+        while count <= 5:
+            time_start = time()
+            GPIO.output(self.TRIG, GPIO.HIGH)
+            sleep(TRIGGER_TIME)
+            GPIO.output(self.TRIG, GPIO.LOW)
+
+            if GPIO.input(self.ECHO) == GPIO.HIGH:
+                time_end = time()
+            
+            timeavg += (time_end - time_start)
+            count +=1
+        timeavg = timeavg/5
+        self.gap = timeavg
+
 
     def sensor_tripped(self, list):
         """If there's movement of a person between a calculated distance of the doorways,

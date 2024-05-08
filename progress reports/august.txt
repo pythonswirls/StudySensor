@@ -25,3 +25,9 @@
     -ran tests on the raspberry pi, and debugged potential GPIO sensor issues
 *in this process I have pulled all branches into mine, and will combine all changes with no conflictions and
     push to main
+
+5.8.2024
+-me and Stephaie met in the evening and worked for for hours finalizing the Sensor.py file and how Main.py 
+    connects everything. (utilizes classes and modifies GUI)
+-we also translated everything to Le Potato and debugged the operation of the code and the Sensors
+-Stephanie additionally drafted the presenattion tri-fold board to be completed 5.9.2024
