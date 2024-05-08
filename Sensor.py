@@ -135,4 +135,3 @@ class Sensor():
 =======
 #Main code in main.py to mash with GUI 
 >>>>>>> a2d402988c09572ee071a279ac927448637cbb6d
-
