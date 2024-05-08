@@ -24,10 +24,13 @@ DISTANCE_DOOR = 2.5 #ft
 #Since two untrasonic sensors are being used, there's benefit in a Sensor class
 
 class Sensor():
-
+    '''added self.TRIG and self.ECHO and getters/setters'''
     def __init__(self, name:str, pins:list):
         self.name = name
         self.pins = self.configure_pins(pins)
+        self.TRIG = 0
+        self.ECHO = 0
+        self.gap = 0.0  #to be used by sensor_tripped for range checking (being within door frame)
 
     @property                   #name getter/setter
     def name(self):
@@ -47,7 +50,29 @@ class Sensor():
             self._pins = value
         else:
             self._pins = DEFAULT_PINS
-            
+
+    "TRIG/ECHO getters/setters"
+    @property                   
+    def TRIG(self):
+        return self._TRIG
+    @TRIG.setter
+    def TRIG(self, value):
+        self._TRIG = value
+
+    @property                  
+    def ECHO(self):
+        return self._ECHO
+    @ECHO.setter
+    def ECHO(self, value):
+        self._ECHO = value  
+
+    @property                   
+    def gap(self):
+        return self._gap
+    @gap.setter
+    def gap(self, value):
+        #shouldn't be negative, but range-checking not needed
+        self._gap = value    
 
 
     def configure_pins(self,pins:list):
@@ -66,29 +91,33 @@ class Sensor():
         #Noes for August: make is where we put in the measured distance from the sensor to the door,
         #then the sensor goes off and gets that value. You get: correction factor. If the correction factor is 
         #lower, than the sensor wont go off unless sensor_distance_reading > known_distance by greater than correction factor
-        #vice versa 
+        #vice versa
+        "self.gap is modified"
 
-    def sensor_tripped(self):
+    def sensor_tripped(self, list):
         """If there's movement of a person between a calculated distance of the doorways,
         the sensor records this distance for correction factor later. """
         
-
+        '''
+        *This has been removed to be restructured in main
         list = []
         count = 0
         if count > 5:
-            GPIO.output(TRIG, GPIO.HIGH)
-            sleep(TRIGGER_TIME)
-            GPIO.output(TRIG, GPIO.LOW)
-            #wait for ECHO pin to be high
-            if (GPIO.input(ECHO) == GPIO.HIGH):
-                time_ = time()
-                list.append(time_)
-            count += 1
-        #use this function to compare the times that one sensor went off with another after averaged
-        return list
+            count +1'''
+        time_start = time()
+        GPIO.output(self.TRIG, GPIO.HIGH)
+        sleep(TRIGGER_TIME)
+        GPIO.output(self.TRIG, GPIO.LOW)
+        #wait for ECHO pin to be high
+        if (GPIO.input(self.ECHO) == GPIO.HIGH):
+            time_end = time()
+            if (time_end - time_start) <= self.gap:
+                list.append(time_end)
+                return list
+            return list
         
 
-
+    "won't work"
     def record_times(self):
         """THIS FUNCTION IS FOR TESTING PURPOSES. If the sensor_tripped function is initiated, a list starts appending
         a time stamp of the trips up to a certain set amount. In case there is an error, check the time stamps"""
