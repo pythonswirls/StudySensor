@@ -63,7 +63,10 @@ class Sensor():
     def calibrate(self):
         """Regulates the distances and returns a correction factor to use for calculations"""
         
-        pass
+        #Noes for August: make is where we put in the measured distance from the sensor to the door,
+        #then the sensor goes off and gets that value. You get: correction factor. If the correction factor is 
+        #lower, than the sensor wont go off unless sensor_distance_reading > known_distance by greater than correction factor
+        #vice versa 
 
     def sensor_tripped(self):
         """If there's movement of a person between a calculated distance of the doorways,
@@ -81,7 +84,7 @@ class Sensor():
                 time_ = time()
                 list.append(time_)
             count += 1
-        #use this function to compare the times that one sensor went off with another 
+        #use this function to compare the times that one sensor went off with another after averaged
         return list
         
 
@@ -93,7 +96,7 @@ class Sensor():
         if self.sensor_tripped == True:
             result = datetime()
 
-            print(result)
+            return result
 
     
     def calculations(self, list):
@@ -122,8 +125,14 @@ class Sensor():
         
         return count
 
+    def __str__(self):
 
+        return f"{self.record_times}"
 
+<<<<<<< HEAD
 
         
+=======
+#Main code in main.py to mash with GUI 
+>>>>>>> a2d402988c09572ee071a279ac927448637cbb6d
 
