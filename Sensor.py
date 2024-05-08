@@ -129,9 +129,5 @@ class Sensor():
 
         return f"{self.record_times}"
 
-<<<<<<< HEAD
 
         
-=======
-#Main code in main.py to mash with GUI 
->>>>>>> a2d402988c09572ee071a279ac927448637cbb6d
