@@ -6,6 +6,7 @@
 #likely wont need to see if main_menu.add.button('Quit', pygame_menu.events.EXIT) = True
 import Sensor
 import GUI
+import pygame
 
 #Instantiate classes/ temp vars
 #                         [trig, echo]
@@ -16,8 +17,7 @@ list1 = []
 list2 = []
 timeavg1 = 0
 timeavg2 = 0
+RUNNING = True
 
-#TODO: git fetch Sensor.py individually from Steph to not overwrite main.py
-
-while run == True:
-    pass
+while(RUNNING):
+    
