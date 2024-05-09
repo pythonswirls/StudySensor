@@ -10,7 +10,7 @@
 
 #likely wont need to see if main_menu.add.button('Quit', pygame_menu.events.EXIT) = True
 from Sensor import *
-#from GUI import *
+from GUI import *
 
 
 #Instantiate classes/ temp vars
@@ -23,12 +23,18 @@ sonic2.calibrate()
 print(f"sonic1 gap = {sonic1.gap}")
 print(f"sonic2 gap = {sonic2.gap}")
 
+'''Note by August; capacity/free_rooms to be modified in main.py
+    free_rooms will be const for our purpose'''
+main = MenuManager(capacity = 0, free_rooms = 0)
+
  
 people = 0
 
 RUNNING = True
 
 while(RUNNING):
+    main.run()
+
     count = 0
     list1 = []
     list2 = []

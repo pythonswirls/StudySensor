@@ -103,7 +103,4 @@ class MenuManager:
     def run(self):
         self.main_menu.mainloop(self.surface)
 
-'''Note by August; capacity/free_rooms to be modified in main.py
-    free_rooms will be const for our purpose'''
-main = MenuManager(capacity = 0, free_rooms = 0)
-main.run()
+
