@@ -1,5 +1,6 @@
 from Sensor import *
 
+
 sonic1 = Sensor("sonic1", [19,18])
 sonic2 = Sensor("sonic2", [6,5])
 sonic1.calibrate
