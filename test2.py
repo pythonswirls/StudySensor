@@ -1,9 +1,9 @@
 from Sensor import *
 
-sonic1 = Sensor("sonic1", [19,18])
+sonic1 = Sensor("sonic1", [23,24])
 sonic2 = Sensor("sonic2", [6,5])
-sonic1.calibrate
-sonic2.calibrate
+sonic1.calibrate()
+sonic2.calibrate()
 
 print(sonic1.gap)
 print(sonic2.gap)

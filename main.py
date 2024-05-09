@@ -15,16 +15,14 @@ from GUI import *
 
 #Instantiate classes/ temp vars
 #                         [trig, echo]
-sonic1 = Sensor("sonic1", [19,18])
+sonic1 = Sensor("sonic1", [23,24])
 sonic2 = Sensor("sonic2", [6,5])
-sonic1.calibrate
-sonic2.calibrate
+sonic1.calibrate()
+sonic2.calibrate()
 
-print(sonic1.gap)
-print(sonic2.gap)
+print(f"sonic1 gap = {sonic1.gap}")
+print(f"sonic2 gap = {sonic2.gap}")
 
-
-run = True
  
 people = 0
 
@@ -47,15 +45,9 @@ while(RUNNING):
     timeavg2 = sonic2.calculations(list2)
     
 
-    #oldval = main.capacity
+    #oldval = main.capacity?
 
     people += sonic1.in_or_out(sonic2, people)
     
     main.__init__((6-people), 0)
-    '''
-    if people <= oldval:
-        main.capacity -= 1
-    else:
-        if people >= oldval:
-            main.capacity += 1'''
     
