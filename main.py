@@ -23,9 +23,6 @@ sonic2.calibrate()
 print(f"sonic1 gap = {sonic1.gap}")
 print(f"sonic2 gap = {sonic2.gap}")
 
-'''Note by August; capacity/free_rooms to be modified in main.py
-    free_rooms will be const for our purpose'''
-main = MenuManager(capacity = 0, free_rooms = 0)
 
  
 people = 0
@@ -33,7 +30,7 @@ people = 0
 RUNNING = True
 
 while(RUNNING):
-    main.run()
+    import Sensor
 
     count = 0
     list1 = []
@@ -51,6 +48,7 @@ while(RUNNING):
 
     if len(list1) != 0:
         people += sonic1.in_or_out(sonic2, people, list1, list2)
+    
     
     print(people)
     #main.__init__((6-people), 0)

@@ -101,6 +101,12 @@ class MenuManager:
 
     # Runs the menu system
     def run(self):
-        self.main_menu.mainloop(self.surface)
+        pygame.display.flip()   #?
+        #self.main_menu.mainloop(self.surface) in which self.surface could go into the main function and then the main
+            #function would go into mainloop
+            #also we sould import GUI into main.py and mainrun in main.py too. 
 
-
+'''Note by August; capacity/free_rooms to be modified in main.py
+    free_rooms will be const for our purpose'''
+main = MenuManager(capacity = 0, free_rooms = 0)        
+main.run()

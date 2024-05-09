@@ -27,7 +27,27 @@
     push to main
 
 5.8.2024
--me and Stephaie met in the evening and worked for for hours finalizing the Sensor.py file and how Main.py 
+-me and Stephaie met in the evening and worked for hours finalizing the Sensor.py file and talked about how Main.py 
     connects everything. (utilizes classes and modifies GUI)
 -we also translated everything to Le Potato and debugged the operation of the code and the Sensors
 -Stephanie additionally drafted the presenattion tri-fold board to be completed 5.9.2024
+
+5.9.2024:
+-we've completed the tri fold board
+-we intially had issue with Poatato GPIO/pineworkslabs layout, but it works now!
+    -our friend Dylan hlped us explore other GPIO avenues initially such as different modules or an arduino
+-using csc 130 code, we've properly setup the sonic sensor usage by python.
+-pygame initially excludes all other code and runs without printlines, but we've found out (2) different pygame
+    refresh methods, and found that then .flip method is the most effective way for GUI.py not to interfere
+    with the rest of the code files
+
+-we sucessfully debugged data type-realted errors when passing databack and forth to GUI and Sensor class instances
+-we expirimented with a distance multiplier, but found more accuracy with raw time values
+
+-finally, as of right now, we are currenlty calibratingt he sensors with SETTLE_TIME, for better accuracy
+    -collectively, the senor readings rate should match a persons walking speed
+    -we just need to:
+        finish calibration
+        pull Joeseph's GUI.py restructuring 
+
+
