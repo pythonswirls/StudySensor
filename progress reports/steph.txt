@@ -20,6 +20,20 @@
     Finally made some progress on the rest of the code functions and ran the first mock test. Doesn't work yet but runs the 
     code without any major errors. Also pushed most of the work to github, this time without deleting the whole repo. 
 
+5-7-2024
+    Can't get the ultrasonic sensors to work. Tried to debug, it's an error coming from the gpio libary. Went over what 
+    we need to cover in our mock presentation tomororrow. 
+
+5-8-2024
+    Made a poster board this morning. August tried to fix the sensors before class with no luck, but GUI worked.
+
+    8:00 pm- By making a seperate test file we figured out its a problem with the sensors more so than the code. 
+    9:00 pm- One sensor works, one doesn't. August found another one that works.
+    11:00 pm- August found another one that works. Program is finally able to calibrate at least. 
+
+5-9-2024
+    Due to mis interpetations on the Sensor.py file, we were able to fix some minor issues and get the GPIO running
+    correctly half the time. 
 
 
 
