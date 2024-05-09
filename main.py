@@ -10,7 +10,7 @@
 
 #likely wont need to see if main_menu.add.button('Quit', pygame_menu.events.EXIT) = True
 from Sensor import *
-from GUI import *
+#from GUI import *
 
 
 #Instantiate classes/ temp vars
@@ -36,18 +36,16 @@ while(RUNNING):
     timeavg2 = 0
    
 
-    if count <= 5:
+    while count <= 3:
         list1 = sonic1.sensor_tripped(list1)
         list2 = sonic2.sensor_tripped(list2)
         count += 1
-    
-    timeavg1 = sonic1.calculations(list1)
-    timeavg2 = sonic2.calculations(list2)
-    
 
     #oldval = main.capacity?
 
-    people += sonic1.in_or_out(sonic2, people)
+    if len(list1) != 0:
+        people += sonic1.in_or_out(sonic2, people, list1, list2)
     
-    main.__init__((6-people), 0)
+    print(people)
+    #main.__init__((6-people), 0)
     

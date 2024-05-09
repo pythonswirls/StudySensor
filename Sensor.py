@@ -13,7 +13,7 @@ GPIO.setmode(GPIO.LE_POTATO_LOOKUP)
 
 #Constants (some unused)
 DEBUG = False
-SETTLE_TIME = .2 #must be low to prevent slow down from real time measurment
+SETTLE_TIME = 0.001 #must be low to prevent slow down from real time measurment
                     #may have to change thi and other values to make program match up with
                     #walking speed
 TRIGGER_TIME = 0.0001
@@ -151,15 +151,15 @@ class Sensor():
         #implement some way to limit the decimals
         return average
 
-    def in_or_out(self, other:'Sensor', people):
+    def in_or_out(self, other:'Sensor', people, list1, list2):
         """Compares two sensors by taking their calculations and returning a positive or negative value"""
         #To label the sensors, self is considered closer to outside the room and other is closer to the inside.
         #if the time is smaller, got tripped first, someone went in, otherwise, someone left the room
         
-        if self.calculations() <= other.calculations:
+        if self.calculations(list1) <= other.calculations(list2):
             people += 1
 
-        elif other.calculations >= other.calculations:
+        elif other.calculations(list1) >= other.calculations(list2):
             people -= 1
 
         else:
