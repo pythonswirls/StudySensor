@@ -38,3 +38,9 @@ of the work done on the room creation. Still need to make rooms with stats from 
 5/3/2024:
 Finished up the rooms, just need the information from the sensor to adjust the values. Map is still being troublesome.
 May need to add that to the QOL section.
+
+5/6/2024:
+Finished up map and labeling. Worked on integration with GPIO setup with group. Should be effectively done for presentation.
+
+5/8/2024 ~ 5/9/2024:
+Redid run() function to work without mainloop. Integrated with GPIO to work properly. 

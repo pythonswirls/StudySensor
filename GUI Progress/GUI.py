@@ -99,7 +99,39 @@ class MenuManager:
 
     # Runs the menu system
     def run(self):
-        self.main_menu.mainloop(self.surface)
+        running = True
+        while running:
+            # Handle Pygame events
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    running = False
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        running = False
 
+            # Update and draw the current menu
+            if self.main_menu.is_enabled():
+                self.main_menu.update(events)
+                self.main_menu.draw(self.surface)
+            elif self.building_menu.is_enabled():
+                self.building_menu.update(events)
+                self.building_menu.draw(self.surface)
+            elif self.map_menu.is_enabled():
+                self.map_menu.update(events)
+                self.map_menu.draw(self.surface)
+            elif self.help_menu.is_enabled():
+                self.help_menu.update(events)
+                self.help_menu.draw(self.surface)
+
+            # Refresh the screen
+            pygame.display.flip()
+
+            # Control the loop's execution speed
+            pygame.time.Clock().tick(60)  # Run at 60 frames per second
+
+        pygame.quit()
+
+# Example usage
 main = MenuManager(capacity = 0, free_rooms = 0)
 main.run()
