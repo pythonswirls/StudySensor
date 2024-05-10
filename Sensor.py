@@ -13,8 +13,8 @@ GPIO.setmode(GPIO.LE_POTATO_LOOKUP)
 
 #Constants (some unused)
 DEBUG = False
-SETTLE_TIME = 0.001 #must be low to prevent slow down from real time measurment
-                    #may have to change thi and other values to make program match up with
+SETTLE_TIME = 0.75/7.5 #must be low to prevent slow down from real time measurment
+                    #may have to change this and other values to make program match up with
                     #walking speed
 TRIGGER_TIME = 0.0001
 SPEED_OF_TIME = 343 #m/s
@@ -43,7 +43,6 @@ class Sensor():
     @name.setter                
     def name(self,value):
         self._name = value
-
 
     "TRIG/ECHO getters/setters"
     @property                   
@@ -87,7 +86,6 @@ class Sensor():
         while count <= 5:
             time_start = time.time()
 
-
             GPIO.output(self.TRIG, GPIO.LOW)
             sleep(TRIGGER_TIME)
             GPIO.output(self.TRIG, GPIO.HIGH)
@@ -116,6 +114,8 @@ class Sensor():
         GPIO.output(self.TRIG, GPIO.LOW)
         sleep(SETTLE_TIME) 
 
+        #time_start - time_end = comparable time stamp
+        time_start = time.time()
         GPIO.output(self.TRIG, GPIO.HIGH)
         sleep(TRIGGER_TIME)
         GPIO.output(self.TRIG, GPIO.LOW)
@@ -123,23 +123,12 @@ class Sensor():
         #wait for ECHO pin to be high
         if (GPIO.input(self.ECHO) == 0):
                 trip_time = time.time()
-                rounded_time = round(trip_time, 5)
-        if rounded_time <= self.gap:   #self.gap - .0006 to be more accurate?
-            my_list.append(rounded_time)
+                #rounded_time = round(trip_time, 5) not needed
+        if (trip_time - time_start) <= (self.gap - .0003):   #lower contol limit 
+            my_list.append(trip_time)
 
         return my_list
         
-
-    "won't work"
-    def record_times(self):
-        """THIS FUNCTION IS FOR TESTING PURPOSES. If the sensor_tripped function is initiated, a list starts appending
-        a time stamp of the trips up to a certain set amount. In case there is an error, check the time stamps"""
-
-        if self.sensor_tripped == True:
-            result = datetime()
-
-            return result
-
     
     def calculations(self, list):
         """Takes in the list of recorded times as a argument and calculates a average time that 
@@ -166,10 +155,6 @@ class Sensor():
             raise ValueError("Wrong data type possibly.")
         
         return people
-
-    def __str__(self):
-
-        return f"{self.record_times}"
 
 
         

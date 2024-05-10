@@ -10,7 +10,7 @@
 
 #likely wont need to see if main_menu.add.button('Quit', pygame_menu.events.EXIT) = True
 from Sensor import *
-from GUI import *
+#from GUI import *
 
 
 #Instantiate classes/ temp vars
@@ -22,17 +22,15 @@ sonic2.calibrate()
 
 print(f"sonic1 gap = {sonic1.gap}")
 print(f"sonic2 gap = {sonic2.gap}")
-
-
- 
 people = 0
 
-RUNNING = True
+RUNNING = True  #while(RUNNING):
 
-while(RUNNING):
-    import Sensor
+def loop_over():
+    global people
 
-    count = 0
+    
+    count = 0   
     list1 = []
     list2 = []
     timeavg1 = 0
