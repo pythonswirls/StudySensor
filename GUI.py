@@ -1,5 +1,5 @@
-# Name: Joseph Dalferes
-# Initial GUI implementation for the StudySensor Project
+#Group #2 GUI
+#Causey, Dalferes, Vaurigaud
 
 from time import sleep
 import pygame
@@ -7,8 +7,9 @@ import pygame_menu
 from pygame_menu import themes
 from pygame_menu.baseimage import BaseImage
 
-HEIGHT = 768
-WIDTH = 1366
+from Sensor import *
+HEIGHT = 820
+WIDTH = 1536
 
 class MenuManager:
 
@@ -101,9 +102,51 @@ class MenuManager:
 
     # Runs the menu system
     def run(self):
-        self.main_menu.mainloop(self.surface)
+        self.main_menu.mainloop(loop_over())
+        #self.main_menu.mainloop(self.surface) 
+            #in which self.surface could go into the main function and then the main
+            #function would go into mainloop
+            #also we sould import GUI into main.py and mainrun in main.py too. 
 
-'''Note by August; capacity/free_rooms to be modified in main.py
+'''Note by August; capacity/free_rooms to be modified in main
     free_rooms will be const for our purpose'''
-main = MenuManager(capacity = 0, free_rooms = 0)
+main = MenuManager(capacity = 0, free_rooms = 0)        
 main.run()
+
+
+#/////////MAIN////////(restructured, no need to import)
+
+from Sensor import *
+
+sonic1 = Sensor("sonic1", [23,24])
+sonic2 = Sensor("sonic2", [6,5])
+sonic1.calibrate()
+sonic2.calibrate()
+
+print(f"sonic1 gap = {sonic1.gap}")
+print(f"sonic2 gap = {sonic2.gap}")
+
+people = 0
+
+def loop_over():
+    pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
+    
+    global people
+
+    count = 0   
+    list1 = []
+    list2 = []
+
+    while count <= 3:
+        list1 = sonic1.sensor_tripped(list1)
+        list2 = sonic2.sensor_tripped(list2)
+        count += 1
+
+    #oldval = main.capacity?
+
+    if len(list1) != 0:
+        people = sonic1.in_or_out(sonic2, people, list1, list2)
+    
+    print(people)
+    main.__init__((6-people), 0)
+    

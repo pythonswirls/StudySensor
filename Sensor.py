@@ -2,7 +2,7 @@
 #Causey, Dalferes, Vaurigaud 
 
 
-import pineworklabs.RPi as GPIO
+import pineworkslabs.RPi as GPIO
 from time import sleep
 import time
 import datetime
@@ -10,10 +10,12 @@ import datetime
 GPIO.setmode(GPIO.LE_POTATO_LOOKUP)
 
 
-#Constants 
-PINS = []
+
+#Constants (some unused)
 DEBUG = False
-SETTLE_TIME = 2
+SETTLE_TIME = 0.75/7.5 #must be low to prevent slow down from real time measurment
+                    #may have to change this and other values to make program match up with
+                    #walking speed
 TRIGGER_TIME = 0.0001
 SPEED_OF_TIME = 343 #m/s
 DEFAULT_PINS = [1,2]
@@ -29,29 +31,18 @@ class Sensor():
     '''added self.TRIG and self.ECHO and getters/setters'''
     def __init__(self, name:str, pins:list):
         self.name = name
-        self.pins = self.configure_pins(pins)
-        self.TRIG = 0
-        self.ECHO = 0
+        #self.configure_pins(pins); not needed
+        self.TRIG = pins[0]
+        self.ECHO = pins[1]
         self.gap = 0.0  #to be used by sensor_tripped for range checking (being within door frame)
 
-    @property                   #name getter/setter
+    @property                 
     def name(self):
         return self._name
     
     @name.setter                
     def name(self,value):
         self._name = value
-
-    @property                   #pins getter/setter
-    def pins(self):
-        return self._pins
-    
-    @pins.setter
-    def pins(self, value):
-        if len(value) == 2:
-            self._pins = value
-        else:
-            self._pins = DEFAULT_PINS
 
     "TRIG/ECHO getters/setters"
     @property                   
@@ -75,16 +66,6 @@ class Sensor():
     def gap(self, value):
         #shouldn't be negative, but range-checking not needed
         self._gap = value    
-
-
-    def configure_pins(self,pins:list):
-        """Receives pins as a argument with two values. Assigns the trig and echo pins 
-            and configures trig as a output and echo as a input"""
-        TRIG = pins[0]
-        ECHO = pins[1]
-
-        GPIO.setup(TRIG, GPIO.OUT)
-        GPIO.setup(ECHO, GPIO.IN)
             
 
     def calibrate(self):
@@ -98,56 +79,56 @@ class Sensor():
         #vice versa
         "self.gap is modified"
         timeavg = 0
+        denom = 0
         count = 0
+        GPIO.setup(self.TRIG, GPIO.OUT)
+        GPIO.setup(self.ECHO, GPIO.IN)
         while count <= 5:
-            time_start = time()
-            GPIO.output(self.TRIG, GPIO.HIGH)
-            sleep(TRIGGER_TIME)
+            time_start = time.time()
+
             GPIO.output(self.TRIG, GPIO.LOW)
+            sleep(TRIGGER_TIME)
+            GPIO.output(self.TRIG, GPIO.HIGH)
 
             if GPIO.input(self.ECHO) == GPIO.HIGH:
-                time_end = time()
-            
-            timeavg += (time_end - time_start)
+                time_end = time.time()
+                timeavg += (time_end - time_start)
+                denom += 1
             count +=1
-        timeavg = timeavg/5
-        print(f"self.gap = {timeavg}")
+
+        if (timeavg == 0) or (denom == 0):
+            #recursion allows function to rerun if self.ECHO was
+                #never HIGH
+                #if sensor broken recursion error will be returned
+            self.calibrate()
+            return
+        
+        timeavg = timeavg/denom
         self.gap = timeavg
 
 
-    def sensor_tripped(self, list):
+    def sensor_tripped(self, my_list):
         """If there's movement of a person between a calculated distance of the doorways,
         the sensor records this distance for correction factor later. """
         
-        '''
-        *This has been removed to be restructured in main
-        list = []
-        count = 0
-        if count > 5:
-            count +1'''
-        time_start = time()
+        GPIO.output(self.TRIG, GPIO.LOW)
+        sleep(SETTLE_TIME) 
+
+        #time_start - time_end = comparable time stamp
+        time_start = time.time()
         GPIO.output(self.TRIG, GPIO.HIGH)
         sleep(TRIGGER_TIME)
         GPIO.output(self.TRIG, GPIO.LOW)
+
         #wait for ECHO pin to be high
-        if (GPIO.input(self.ECHO) == GPIO.HIGH):
-            time_end = time()
-            if (time_end - time_start) <= self.gap:
-                list.append(time_end)
-                return list
-            return list
+        if (GPIO.input(self.ECHO) == 0):
+                trip_time = time.time()
+                #rounded_time = round(trip_time, 5) not needed
+        if (trip_time - time_start) <= (self.gap - .0003):   #lower contol limit 
+            my_list.append(trip_time)
+
+        return my_list
         
-
-    "won't work"
-    def record_times(self):
-        """THIS FUNCTION IS FOR TESTING PURPOSES. If the sensor_tripped function is initiated, a list starts appending
-        a time stamp of the trips up to a certain set amount. In case there is an error, check the time stamps"""
-
-        if self.sensor_tripped == True:
-            result = datetime()
-
-            return result
-
     
     def calculations(self, list):
         """Takes in the list of recorded times as a argument and calculates a average time that 
@@ -159,22 +140,21 @@ class Sensor():
         #implement some way to limit the decimals
         return average
 
-    def in_or_out(self, other:'Sensor', people):
+    def in_or_out(self, other:'Sensor', people, list1, list2):
         """Compares two sensors by taking their calculations and returning a positive or negative value"""
         #To label the sensors, self is considered closer to outside the room and other is closer to the inside.
         #if the time is smaller, got tripped first, someone went in, otherwise, someone left the room
-
-        if self.calculations() <= other.calculations:
+        
+        if self.calculations(list1) <= other.calculations(list2):
             people += 1
 
-        elif other.calculations >= other.calculations:
+        elif other.calculations(list1) >= other.calculations(list2):
             people -= 1
 
         else:
-            raise ValueError("Negative value returned.")
+            raise ValueError("Wrong data type possibly.")
         
         return people
 
-    def __str__(self):
 
-        return f"{self.record_times}"
+        
