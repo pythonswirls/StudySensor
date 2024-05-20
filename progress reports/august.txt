@@ -27,7 +27,6 @@
     push to main
 
 5.8.2024
--me and Stephaie met in the evening and worked for for hours finalizing the Sensor.py file and how Main.py 
-    connects everything. (utilizes classes and modifies GUI)
+-me and Stephaie met in the evening and worked for for hours finalizing the Sensor.py file and how Main.py connects everything. (utilizes classes and modifies GUI)
 -we also translated everything to Le Potato and debugged the operation of the code and the Sensors
--Stephanie additionally drafted the presenattion tri-fold board to be completed 5.9.2024
+-Stephanie additionally drafted the presentation tri-fold board to be completed 5.9.2024
