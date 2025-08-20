@@ -19,7 +19,7 @@ Here are some lessons learned from our develeopment of the project;
 #### Sensor calibration/main.py + GUI hookup:
 * https://github.com/smc118
 * https://github.com/pythonswirls
-  * Primarily handled the class construction and grueling process of continually calibrating the sonic sensors. We also replaced our sensors last minute, as we dsicovered one was (likely) shorted. Thank goodness we had spares!
+  * Primarily handled the class construction and grueling process of continually calibrating the sonic sensors. We also replaced our sensors last minute, as we discovered one was (likely) shorted. Thank goodness we had spares!
 #### GUI:
 * https://github.com/JDalfe115
   * Respsonsoble for crafting the beautiful GUI using pygame-menu. Over the course of the project's development, he had personally tried a few other python GUI libs. Pygame-menu proved to be the most straight-forward
