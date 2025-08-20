@@ -30,3 +30,4 @@ Writing this one year later, in the process of sprucing up my github portfolio, 
 
 Although at the time we were a little hard on ourselves for not acheiving our standard of a completed product, we all were given the much-needed nudge in the direction of our respective career paths. We realize now that the purpose of Freshamn Design project entirely was to give us a snadbox to learn in without much risk of failure. We had become a bit more accustomed to the technologies utilized by software developers as well; very useful for future projects! 
 
+P.S. take a look at the gallery
