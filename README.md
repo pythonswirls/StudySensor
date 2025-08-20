@@ -4,7 +4,7 @@
 ### Louisiana Tech University
 ### Spring Quarter 2024
 
-For our design project, we needed to come up with a product that used the Le Potato (a rapsberry-pi-alternative), it's GPIO output/input, and an intuitive GUI. We decided to go with a "StudySensor", which utilizes two HR-SC04 Sonic Sensors to detect someone entering a study room. The information is passed from the sensor setup (managed by two instantiations of a single python class) to the "Main" portion of the program, then to the "GUI" portion.
+For our design project, we needed to come up with a product that used the Le Potato (a pi-alternative), it's GPIO output/input, and an intuitive GUI. We decided to go with a "StudySensor", which utilizes two HR-SC04 Sonic Sensors to detect someone entering a study room. The information is passed from the sensor setup (managed by two instantiations of a single python class) to the "Main" portion of the program, then to the "GUI" portion.
 The entirety of the program is written in python, and uses modules Pygame, Pygame-menu, time, and the Pineworkslabs.RPi GPIO scheme.
 
 #### Design
@@ -19,7 +19,13 @@ Here are some lessons learned from our develeopment of the project;
 #### Sensor calibration/main.py + GUI hookup:
 * https://github.com/smc118
 * https://github.com/pythonswirls
-** Primarily handled the class construction and grueling process of continually calibrating the sonic sensors. We also replaced our sensors last minute, as we dsicovered one was (likely) shorted. Thank goodness we had spares!
+  * Primarily handled the class construction and grueling process of continually calibrating the sonic sensors. We also replaced our sensors last minute, as we dsicovered one was (likely) shorted. Thank goodness we had spares!
 #### GUI:
 * https://github.com/JDalfe115
-** Respsonsoble for crafting the beautiful GUI.
+  * Respsonsoble for crafting the beautiful GUI using pygame_menu. Over the course of the project's development, he had personally tried a few other python GUI libs. Pygame-menu proved to be the most straight-forward
+ 
+### Afterword One Year Later (by pythonswirls)
+#### Summer Quarter 2025
+Writing this one year later, in the process of sprucing up my github portfolio, I'm glad we were given the chance to challenge ourselves. We were able to learn a little about the software development process, and implement the languages/concepts we had been learning into a grounded project in a creative way. Personally, I had never really had the chance to work collaboratively on a project as technical as this (before I was a freshman in college) and I also learned much on how information in a project should be structured so that the communication between collaborators is most effective.
+
+Although at the time we were a little hard on ourselves for not acheiving our standard of a completed product, we all were given the much-needed nudge in the direction of our respective career paths. We realize now that the purpose of Freshamn Design project entirely was to give us a snadbox to learn in without much risk of failure. We had become a bit more accustomed to the technologies utilized by software developers as well; very useful for future projects! 
